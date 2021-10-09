@@ -1,0 +1,87 @@
+
+(rules PCB flaps-throttle-pcb
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 1310)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.2)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.8)
+    )
+  )
+  (rule
+    (width 300.0)
+    (clear 200.2)
+    (clear 150.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:300_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:300_um" "Via[0-1]_800:300_um" default
+  )
+  (via 
+    "Via[0-1]_800:300_um-kicad_default" "Via[0-1]_800:300_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:300_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:300_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 300.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND +5V PWM1 PWM2 PWM3 "GPS-NAV" "GEAR_UP" "ALT_STATIC"
+    "GEAR_DOWN" "CARB_HEAT" "FLAPS_DOWN" "FLAPS_UP" "FLAPS_10" "FLAPS_20" "CABIN_AIR" "FUEL_OFF"
+    "FUEL_R" "FUEL_L" "FUEL_BOTH" "PARKING_BRAKE" "Net-(C16-Pad2)" "Net-(C17-Pad2)" "FLAPS_PWM" "Throttle_Analog"
+    "Mixture_Analog" "Helice_Analog" "Net-(J17-Pad1)" "Net-(J18-Pad1)" "Net-(J19-Pad1)" "Net-(J25-Pad1)" "Net-(MCU1-Pad40)" "Net-(MCU1-Pad2)"
+    "Net-(MCU1-Pad8)" "Net-(MCU1-Pad10)" "Net-(MCU1-Pad12)" "Net-(MCU1-Pad14)" "Net-(MCU1-Pad16)" "LED_RIGHT" "B_ENC_TRIM" "Net-(MCU1-Pad42)"
+    "Net-(MCU1-Pad1)" "Net-(MCU1-Pad7)" "Net-(MCU1-Pad9)" "Net-(MCU1-Pad11)" "Net-(MCU1-Pad15)" "A_ENC_TRIM" "LED_NOSE" "LED_LEFT"
+    "Net-(MCU1-Pad41)" "Net-(MCU1-Pad67)" "Net-(MCU1-Pad43)" "Net-(MCU1-Pad45)" "Net-(MCU1-Pad47)" "Net-(MCU1-Pad44)" "Net-(MCU1-Pad46)" "Net-(MCU1-Pad48)"
+    "Net-(MCU1-Pad65)" "Net-(MCU1-Pad69)" "Net-(MCU1-Pad70)" "Net-(MCU1-Pad68)" "Net-(MCU1-Pad66)" "Net-(MCU1-Pad62)" "Net-(MCU1-Pad74)" "Net-(MCU1-Pad76)"
+    "Net-(MCU1-Pad78)" "Net-(MCU1-Pad80)" "Net-(MCU1-Pad82)" "Net-(MCU1-Pad84)" "Net-(MCU1-Pad86)" "Net-(MCU1-Pad50)" "Net-(MCU1-Pad52)" "Net-(MCU1-Pad58)"
+    "Net-(MCU1-Pad56)" "Net-(MCU1-Pad54)" "Net-(MCU1-Pad64)" "Net-(MCU1-Pad60)" "Net-(MCU1-Pad75)" "Net-(MCU1-Pad77)" "Net-(MCU1-Pad79)" "Net-(MCU1-Pad81)"
+    "Net-(MCU1-Pad83)" "Net-(MCU1-Pad85)" "Net-(MCU1-Pad49)" "Net-(MCU1-Pad51)" "Net-(MCU1-Pad53)" "Net-(MCU1-Pad55)" "Net-(MCU1-Pad57)" "Net-(MCU1-Pad59)"
+    "Net-(MCU1-Pad61)" "Net-(MCU1-Pad63)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 300.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
